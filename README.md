@@ -1,4 +1,4 @@
-# 🚦 DSA 210 — Istanbul Traffic Density & Weather Conditions
+#  DSA 210 — Istanbul Traffic Density & Weather Conditions
 
 **Student:** Helin Keskin  
 **University:** Sabancı University  
@@ -7,7 +7,7 @@
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 This project investigates the **correlation between Istanbul Traffic Density and Weather Conditions** (Temperature, Precipitation, Humidity) for January 2025.
 
@@ -15,7 +15,7 @@ This project investigates the **correlation between Istanbul Traffic Density and
 
 ---
 
-## 📂 Data Sources
+##  Data Sources
 
 | Dataset | Source | Description |
 |---|---|---|
@@ -24,7 +24,7 @@ This project investigates the **correlation between Istanbul Traffic Density and
 
 ---
 
-## 🔬 Methodology
+## Methodology
 
 The analysis follows a complete data science pipeline:
 
@@ -34,7 +34,7 @@ The analysis follows a complete data science pipeline:
 
 ---
 
-## 📊 Key Results
+## Key Results
 
 ### EDA Findings
 
@@ -49,7 +49,7 @@ The distribution of vehicle counts across weather event types shows overlapping 
 
 ---
 
-## 📐 Hypothesis Test
+## Hypothesis Test
 
 | | |
 |---|---|
@@ -66,13 +66,13 @@ The distribution of vehicle counts across weather event types shows overlapping 
 | T-statistic | -34.22 |
 | P-value | 1.0000 |
 
-**Decision: ✅ Fail to Reject H₀**
+**Decision:  Fail to Reject H₀**
 
 > The p-value (1.0) is far above the significance threshold (α = 0.05). There is **no statistically significant increase** in traffic density during rainy conditions in Istanbul for January 2025. In fact, average vehicle count was slightly *lower* on rainy days (85.56) compared to clear days (91.42), suggesting drivers may avoid travel during precipitation.
 
 ---
 
-## ⚖️ Ethical Considerations
+##  Ethical Considerations
 
 - **Data Privacy:** Both datasets are open-access with no personally identifiable information (PII).
 - **Bias Awareness:** Results are limited to January 2025 and may not generalize to other seasons.
@@ -80,7 +80,7 @@ The distribution of vehicle counts across weather event types shows overlapping 
 
 ---
 
-## 🗂️ Repository Structure
+##  Repository Structure
 
 ```
 DSA210-Project/
@@ -95,7 +95,7 @@ DSA210-Project/
 
 ---
 
-## 🚀 Running the Project
+##  Running the Project
 
 ```bash
 # Install dependencies
@@ -107,7 +107,7 @@ jupyter notebook notebooks/analysis.ipynb
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 See [`requirements.txt`](requirements.txt):
 - `pandas` — data manipulation
