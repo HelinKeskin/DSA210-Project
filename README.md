@@ -11,7 +11,7 @@
 
 This project investigates the correlation between Istanbul Traffic Density and Weather Conditions (Temperature, Precipitation, Humidity) for January 2025.
 
-**Research Question:** Does rain significantly increase traffic density in Istanbul?
+Research Question: Does rain significantly increase traffic density in Istanbul?
 
 ---
 
@@ -28,9 +28,9 @@ This project investigates the correlation between Istanbul Traffic Density and W
 
 The analysis follows a complete data science pipeline:
 
-1. Data Loading & Enrichment — Loaded both CSVs, converted timestamps, filtered for January 2025, interpolated missing values, and merged datasets on the `date` column.
+1. Data Loading & Enrichment — Loaded both CSVs, converted timestamps, filtered for January 2025, interpolated missing values, and merged datasets on the date column.
 2. Exploratory Data Analysis (EDA) — Three key visualizations: correlation heatmap, 24-hour traffic cycle line chart, and weather event boxplot.
-3. Statistical Hypothesis Testing — Independent T-Test (one-tailed) via `scipy.stats`.
+3. Statistical Hypothesis Testing — Independent T-Test (one-tailed) via scipy.stats.
 
 ---
 
@@ -38,7 +38,7 @@ The analysis follows a complete data science pipeline:
 
 ### EDA Findings
 
-**Correlation Heatmap**
+Correlation Heatmap
 The heatmap revealed that `precip` (precipitation) and `NUMBER_OF_VEHICLES` have a slight negative correlation, suggesting rainy days do not meaningfully increase vehicle counts in the analyzed period.
 
 24-Hour Traffic Cycle (Rainy vs Clear)
@@ -53,9 +53,9 @@ The distribution of vehicle counts across weather event types shows overlapping 
 
 | | |
 |---|---|
-| **H₀ (Null)** | No significant difference in traffic density between rainy and non-rainy hours |
-| **H₁ (Alternative)** | Traffic density is significantly higher during rainy hours |
-| **Method** | Independent T-Test (one-tailed), α = 0.05 |
+| H₀ (Null) | No significant difference in traffic density between rainy and non-rainy hours |
+| H₁ (Alternative) | Traffic density is significantly higher during rainy hours |
+| Method | Independent T-Test (one-tailed), α = 0.05 |
 
 ### Results
 
@@ -66,7 +66,7 @@ The distribution of vehicle counts across weather event types shows overlapping 
 | T-statistic | -34.22 |
 | P-value | 1.0000 |
 
-**Decision:  Fail to Reject H₀**
+Decision:  Fail to Reject H₀
 
 > The p-value (1.0) is far above the significance threshold (α = 0.05). There is **no statistically significant increase** in traffic density during rainy conditions in Istanbul for January 2025. In fact, average vehicle count was slightly *lower* on rainy days (85.56) compared to clear days (91.42), suggesting drivers may avoid travel during precipitation.
 
@@ -74,9 +74,9 @@ The distribution of vehicle counts across weather event types shows overlapping 
 
 ##  Ethical Considerations
 
-- **Data Privacy:** Both datasets are open-access with no personally identifiable information (PII).
-- **Bias Awareness:** Results are limited to January 2025 and may not generalize to other seasons.
-- **Causality Warning:** Correlations observed do not imply causation. Holidays, events, and road construction are confounding factors.
+- Data Privacy: Both datasets are open-access with no personally identifiable information (PII).
+- Bias Awareness: Results are limited to January 2025 and may not generalize to other seasons.
+- Causality Warning: Correlations observed do not imply causation. Holidays, events, and road construction are confounding factors.
 
 ---
 
