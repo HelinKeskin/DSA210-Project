@@ -9,9 +9,9 @@
 
 ##  Project Overview
 
-This project investigates the **correlation between Istanbul Traffic Density and Weather Conditions** (Temperature, Precipitation, Humidity) for January 2025.
+This project investigates the correlation between Istanbul Traffic Density and Weather Conditions (Temperature, Precipitation, Humidity) for January 2025.
 
-**Research Question:** *Does rain significantly increase traffic density in Istanbul?*
+**Research Question:** Does rain significantly increase traffic density in Istanbul?
 
 ---
 
@@ -28,9 +28,9 @@ This project investigates the **correlation between Istanbul Traffic Density and
 
 The analysis follows a complete data science pipeline:
 
-1. **Data Loading & Enrichment** — Loaded both CSVs, converted timestamps, filtered for January 2025, interpolated missing values, and merged datasets on the `date` column.
-2. **Exploratory Data Analysis (EDA)** — Three key visualizations: correlation heatmap, 24-hour traffic cycle line chart, and weather event boxplot.
-3. **Statistical Hypothesis Testing** — Independent T-Test (one-tailed) via `scipy.stats`.
+1. Data Loading & Enrichment — Loaded both CSVs, converted timestamps, filtered for January 2025, interpolated missing values, and merged datasets on the `date` column.
+2. Exploratory Data Analysis (EDA) — Three key visualizations: correlation heatmap, 24-hour traffic cycle line chart, and weather event boxplot.
+3. Statistical Hypothesis Testing — Independent T-Test (one-tailed) via `scipy.stats`.
 
 ---
 
@@ -41,10 +41,10 @@ The analysis follows a complete data science pipeline:
 **Correlation Heatmap**
 The heatmap revealed that `precip` (precipitation) and `NUMBER_OF_VEHICLES` have a slight negative correlation, suggesting rainy days do not meaningfully increase vehicle counts in the analyzed period.
 
-**24-Hour Traffic Cycle (Rainy vs Clear)**
+24-Hour Traffic Cycle (Rainy vs Clear)
 Traffic peaks occur during morning rush (07:00–09:00) and evening rush (17:00–19:00) on both rainy and clear days. The overall pattern is similar across weather conditions.
 
-**Traffic Occupancy Boxplot (Rain / Snow / Sunny)**
+Traffic Occupancy Boxplot (Rain / Snow / Sunny)
 The distribution of vehicle counts across weather event types shows overlapping interquartile ranges, indicating weather type alone is not a strong predictor of traffic occupancy.
 
 ---
