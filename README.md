@@ -35,10 +35,10 @@ During EDA, plotting the traffic intensity against rainy days showed a visible u
 
 To bridge the gap between pure statistical numbers and visual evidence, I plotted the traffic density distributions against the presence of rain using both a bar chart and a box plot. These visualizations serve as the direct empirical foundation for the two-sample t-test conducted above.
 
-1. **The Bar Plot (Mean Comparison):** The bar chart compares the absolute average traffic intensity of rainy versus non-rainy days. Visually, there is a distinct upward shift in the traffic benchmark whenever precipitation occurs (moving from roughly 55% to over 65%). While a bar plot successfully highlights the difference in *means*—which is exactly what the t-test evaluates ($H_0: \mu_{rain} = \mu_{no\_rain}$)—it doesn't show the underlying variance.
+1. **The Bar Plot (Mean Comparison):** The bar chart compares the absolute average traffic intensity of rainy versus non-rainy days. Visually, there is a distinct upward shift in the traffic benchmark whenever precipitation occurs (moving from roughly 55% to over 65%).
 
 2. **The Box Plot (Distribution & Variance):**
-   To check if this mean difference was just skewed by a few extreme chaotic days, I utilized a box plot. The box plot reveals that the entire distribution of traffic intensity shifts upward on rainy days. The median line for rainy days sits significantly higher, and the interquartile range (IQR) demonstrates that even the lower bound of traffic on a rainy day is often higher than the average traffic of a clear day.
+   To check if this mean difference was just skewed by a few extreme chaotic days, I utilized a box plot. The box plot reveals that the entire distribution of traffic intensity shifts upward on rainy days. The median line for rainy days sits significantly higher, and the interquartile range demonstrates that even the lower bound of traffic on a rainy day is often higher than the average traffic of a clear day.
 
 #### Conclusion of the Connection:
 In data science, visualizations can show a trend, but they cannot prove mathematical significance. Conversely, a p-value from a t-test gives mathematical proof but lacks intuitive context. 
