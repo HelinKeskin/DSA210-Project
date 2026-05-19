@@ -29,6 +29,8 @@ During EDA, plotting the traffic intensity against rainy days showed a visible u
 ### Hypothesis Testing Visualizations:
 <img width="880" height="528" alt="Unknown" src="https://github.com/user-attachments/assets/164e39ab-54b2-4799-987d-34bf2a320713" />
 <img width="841" height="547" alt="Unknown-2" src="https://github.com/user-attachments/assets/57e85f18-c463-4d42-bd6e-f3375117f0a3" />
+
+
 ### Statistical Connection:
 
 To bridge the gap between pure statistical numbers and visual evidence, I plotted the traffic density distributions against the presence of rain using both a bar chart and a box plot. These visualizations serve as the direct empirical foundation for the two-sample t-test conducted above.
