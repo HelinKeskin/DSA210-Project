@@ -26,6 +26,12 @@ During EDA, plotting the traffic intensity against rainy days showed a visible u
 - **H0 (Null Hypothesis):** The average traffic intensity in Istanbul is the same on rainy days and non-rainy days.
 - **Ha (Alternative Hypothesis):** The average traffic intensity is significantly higher on rainy days.
 
+### Hypothesis Testing Visualizations:
+<img width="880" height="528" alt="Unknown" src="https://github.com/user-attachments/assets/164e39ab-54b2-4799-987d-34bf2a320713" />
+<img width="841" height="547" alt="Unknown-2" src="https://github.com/user-attachments/assets/57e85f18-c463-4d42-bd6e-f3375117f0a3" />
+
+
+
 
 **Method & Finding:** I ran a two-sample t-test comparing the traffic density distributions. The resulting p-value was low enough (< 0.05) to confidently reject the null hypothesis. This statistically confirms that rainy days do experience worse traffic conditions on average in Istanbul.
 
