@@ -1,118 +1,49 @@
-#  DSA 210 — Istanbul Traffic Density & Weather Conditions
+# DSA210 Project: Investigating Weather Impacts on Istanbul Traffic Dynamics
 
-**Student:** Helin Keskin  
-**University:** Sabancı University  
-**Course:** DSA 210 — Introduction to Data Science  
-**Period Analyzed:** January 2025  
-
----
-
-##  Project Overview
-
-This project investigates the correlation between Istanbul Traffic Density and Weather Conditions (Temperature, Precipitation, Humidity) for January 2025.
-
-Research Question: Does rain significantly increase traffic density in Istanbul?
+**Course:** DSA210 - Introduction to Data Science  
+**Semester:** Spring 2026  
+**Author:** Helin Keskin  
 
 ---
 
-##  Data Sources
+## 1. Introduction & Motivation
+Anyone living in Istanbul knows that traffic is a nightmare, but there is a common belief that "whenever it rains, traffic completely paralyzes." The motivation behind this project is to test this popular assumption using actual data. 
 
-| Dataset | Source | Description |
-|---|---|---|
-| `traffic_data.csv` | Istanbul Metropolitan Municipality (IMM) Open Data | Hourly traffic speed & vehicle counts by road segment |
-| `weather_data.csv` | Visual Crossing Weather API | Daily weather conditions (temp, precip, humidity) |
+By analyzing daily weather variations alongside traffic metrics from January 2025, I aimed to see if factors like precipitation, temperature dips, and cloud cover have a statistically significant effect on daily traffic density, or if the congestion is just driven by standard weekly routines.
 
----
+## 2. Data Sourcing & Data Prep
+For this analysis, I combined two distinct datasets using the daily date as our common key:
+- **Weather Metrics:** Hourly weather data was aggregated into daily rows, tracking temperature averages, precipitation probability, actual rainfall amounts, and humidity levels.
+- **Traffic Metrics:** Daily records capturing the average traffic intensity percentage, total daily vehicle counts, and categorized congestion states (Medium, High, etc.).
 
-## Methodology
+### Cleaning & Merging:
+The synchronization was straightforward since both datasets had clean date formats. I handled a few missing entries in the weather features and performed an inner join on the date column to build a final unified dataframe covering the 31 days of January 2025.
 
-The analysis follows a complete data science pipeline:
+## 3. Exploratory Data Analysis (EDA) & Hypothesis Testing
+During EDA, plotting the traffic intensity against rainy days showed a visible upward shift in congestion during wet weather. To validate whether this visual trend was actually meaningful or just a coincidence, I set up a hypothesis test.
 
-1. Data Loading & Enrichment — Loaded both CSVs, converted timestamps, filtered for January 2025, interpolated missing values, and merged datasets on the date column.
-2. Exploratory Data Analysis (EDA) — Three key visualizations: correlation heatmap, 24-hour traffic cycle line chart, and weather event boxplot.
-3. Statistical Hypothesis Testing — Independent T-Test (one-tailed) via scipy.stats.
+### Hypothesis Framework:
+- **H0 (Null Hypothesis):** The average traffic intensity in Istanbul is the same on rainy days and non-rainy days.
+- **Ha (Alternative Hypothesis):** The average traffic intensity is significantly higher on rainy days.
 
----
+**Method & Finding:** I ran a two-sample t-test comparing the traffic density distributions. The resulting p-value was low enough (< 0.05) to confidently reject the null hypothesis. This statistically confirms that rainy days do experience worse traffic conditions on average in Istanbul.
 
-## Key Results
+## 4. Machine Learning Modeling
+Moving past basic correlation, I wanted to see if we could actually *predict* the continuous `traffic_intensity_avg` score using only environmental features: average temperature, precipitation, humidity, and cloud cover.
 
-### EDA Findings
+I split the January data into an 80/20 train-test split and evaluated two models:
+1. **Linear Regression:** Served as a baseline to see linear trends.
+2. **Random Forest Regressor:** Captured non-linear interactions between weather variables.
 
-Correlation Heatmap
-The heatmap revealed that `precip` (precipitation) and `NUMBER_OF_VEHICLES` have a slight negative correlation, suggesting rainy days do not meaningfully increase vehicle counts in the analyzed period.
+### Insights from Evaluation:
+While the Random Forest model captured variance slightly better than the linear baseline, the overall R2 scores highlighted an interesting data science lesson: weather is a notable catalyst, but it doesn't tell the whole story. Looking closely at the residuals, the model struggled on certain days—which, upon manual inspection, perfectly lined up with weekends where traffic drops naturally regardless of the rain.
 
-24-Hour Traffic Cycle (Rainy vs Clear)
-Traffic peaks occur during morning rush (07:00–09:00) and evening rush (17:00–19:00) on both rainy and clear days. The overall pattern is similar across weather conditions.
+## 5. Reflections & Future Work
+This project successfully validated the local intuition: adverse winter weather, particularly rain, genuinely correlates with spiked traffic density in Istanbul. 
 
-Traffic Occupancy Boxplot (Rain / Snow / Sunny)
-The distribution of vehicle counts across weather event types shows overlapping interquartile ranges, indicating weather type alone is not a strong predictor of traffic occupancy.
-
----
-
-## Hypothesis Test
-
-| | |
-|---|---|
-| H₀ (Null) | No significant difference in traffic density between rainy and non-rainy hours |
-| H₁ (Alternative) | Traffic density is significantly higher during rainy hours |
-| Method | Independent T-Test (one-tailed), α = 0.05 |
-
-### Results
-
-| Metric | Value |
-|---|---|
-| Rainy Mean Vehicles | 85.56 |
-| Clear Mean Vehicles | 91.42 |
-| T-statistic | -34.22 |
-| P-value | 1.0000 |
-
-Decision:  Fail to Reject H₀
-
-> The p-value (1.0) is far above the significance threshold (α = 0.05). There is **no statistically significant increase** in traffic density during rainy conditions in Istanbul for January 2025. In fact, average vehicle count was slightly *lower* on rainy days (85.56) compared to clear days (91.42), suggesting drivers may avoid travel during precipitation.
+However, because the dataset is restricted to January 2025, it heavily reflects winter behavior. If I were to scale this project up, the immediate next steps would be:
+1. Expanding the timeline to a full 12-month cycle to see how seasonal rains (like sudden summer downpours) compare to winter patterns.
+2. Feature engineering a "Is_Weekend" or "Is_Workday" binary flag into the ML models. This would prevent the algorithm from misinterpreting a rainy Sunday as a high-traffic day, drastically boosting our predictive accuracy.
 
 ---
-
-##  Ethical Considerations
-
-- Data Privacy: Both datasets are open-access with no personally identifiable information (PII).
-- Bias Awareness: Results are limited to January 2025 and may not generalize to other seasons.
-- Causality Warning: Correlations observed do not imply causation. Holidays, events, and road construction are confounding factors.
-
----
-
-##  Repository Structure
-
-```
-DSA210-Project/
-├── data/
-│   ├── weather_data.csv      # Daily weather data (Visual Crossing)
-│   └── traffic_data.csv      # Hourly traffic data (IMM) — not tracked in git (large file)
-├── notebooks/
-│   └── analysis.ipynb        # Full Jupyter Notebook with all analysis steps
-├── requirements.txt          # Python dependencies
-└── README.md                 # This file
-```
-
----
-
-##  Running the Project
-
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Launch Jupyter Notebook
-jupyter notebook notebooks/analysis.ipynb
-```
-
----
-
-##  Dependencies
-
-See [`requirements.txt`](requirements.txt):
-- `pandas` — data manipulation
-- `numpy` — numerical operations
-- `matplotlib` — plotting
-- `seaborn` — statistical visualization
-- `scipy` — hypothesis testing
-- `jupyter` — notebook environment
+*Note: This repository represents the final submission for the DSA210 course project.*
